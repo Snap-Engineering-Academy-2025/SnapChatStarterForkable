@@ -197,7 +197,7 @@ export default function SearchScreen() {
             // ItemSeparatorComponent={() => <View style={{height: -50, width:"50%", gap:10}} />}
           />
         ) : (
-          <Text>No "usersToAdd" table</Text>
+          <Text>You have no friends 👁️ 👄 👁️</Text>
         )}
 
         <Text style={{ paddingLeft: 10, fontWeight: "bold" }}>

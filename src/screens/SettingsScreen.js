@@ -9,7 +9,7 @@ export default function SettingsScreen() {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("01/01/1998"); // Default random date
-  const [profilePictureUrl, setProfilePictureUrl] = useState("");
+  const [profilePictureUrl, setProfilePictureUrl] = useState(""); //IMPORTANT 
   const [initialDisplayName, setInitialDisplayName] = useState("");
   const [initialEmail, setInitialEmail] = useState("");
   const [editingDisplayName, setEditingDisplayName] = useState(false);
@@ -53,7 +53,7 @@ export default function SettingsScreen() {
     try {
       const { error } = await supabase
         .from("profiles") // Replace with your table name
-        .update({ avatar_url: profilePictureUrl })
+        .update({ avatar_url: profilePictureUrl }) //IMPORTANT
         .eq("id", user.id);
 
       if (error) throw error;

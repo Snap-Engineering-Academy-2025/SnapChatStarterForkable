@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { findAstrologySign } from "../utils/hooks/findAstrologySign";
 import { useAuthentication } from "../utils/hooks/useAuthentication";
 
+
 const handleSignOut = async () => {
   try {
     const { error } = await supabase.auth.signOut();
@@ -23,16 +24,42 @@ export default function ProfileScreen() {
   const { user } = useAuthentication();
   const [astrology, setAstrology] = useState("Pisces");
   const userSign = findAstrologySign();
+  //ADDED state var for profile picture
+   const [profilePicUrl, setProfilePicUrl] = useState(
+    "https://i.imgur.com/FxsJ3xy.jpg",
+  );
 
   useEffect(() => {
+    //updated useEffect from Header
+    async function fetchProfilePic() {
+      if (user === null) {
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("avatar_url")
+        .eq("id", user.id)
+        .single();
+
+      if (error) {
+        console.log("Profile pic fetch failure");
+      } else if (data.avatar_url) {
+        setProfilePicUrl(data.avatar_url);
+      }
+    }
+
+    fetchProfilePic();
+
+
+
     setAstrology(userSign.sign);
-  }),
-    [];
+  }, [user]);
 
   return (
     <View style={{ alignItems: "center" }}>
       <Image
-        source={{ uri: "https://i.imgur.com/FxsJ3xy.jpg" }}
+        source={{ uri: profilePicUrl }} //update to state var
         style={{ width: 150, height: 150, borderRadius: 150 / 2 }}
       />
       <Text

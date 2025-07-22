@@ -197,7 +197,7 @@ export default function SearchScreen() {
             // ItemSeparatorComponent={() => <View style={{height: -50, width:"50%", gap:10}} />}
           />
         ) : (
-          <Text>You have no friends 👁️ 👄 👁️</Text>
+          <Text style={{margin: "auto", padding: 20, fontWeight: 500 }}>You have no friends 👁️ 👄 👁️</Text>
         )}
 
         <Text style={{ paddingLeft: 10, fontWeight: "bold" }}>

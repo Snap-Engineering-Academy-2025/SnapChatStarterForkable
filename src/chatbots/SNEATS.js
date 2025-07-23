@@ -13,11 +13,11 @@ console.error = (...args) => {
 
 const CHATBOT_USER_OBJ = {
   _id: 3,
-  name: "React Native Chatbot",
-  avatar: defaultProfileImage,
+  name: "SNEATS",
+  avatar: "https://drive.google.com/file/d/1IhjM_RrfRjBZ9dq0v-X35zQ1uJ8MIOod/view?usp=sharing",
 };
 
-export default function BasicChatbot() {
+export default function SNEATS() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
